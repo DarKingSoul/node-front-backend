@@ -10,6 +10,7 @@ const ProfileCard = () => {
         name: "Marvin Salcedo"
     }
 
+    // agregar otras redes
     const twitter = <Icon name="twitter" size={30} color={"black"} />
     const facebook = <Icon name="facebook" size={30} color={"black"}/>
     const instagram = <Icon name="instagram" size={30} color={"black"}/>
