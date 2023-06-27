@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Menu from "./componentes/home/Menu";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import ListComponent from "./componentes/list/List";
+import Server from "./componentes/server/Server";
 
 const Tab = createBottomTabNavigator();
 
@@ -21,7 +22,13 @@ const Navigation = () => {
                 tabBarIcon: ({color, size}) => {
                     <MaterialCommunityIcons name="clipboard-list" color={color} size={size} />
                 },
-            }}></Tab.Screen> 
+            }}></Tab.Screen>
+            <Tab.Screen name="Server" component={Server} options={{
+                tabBarLabel: "Server",
+                tabBarIcon: ({color, size}) => {
+                    <MaterialCommunityIcons name="clipboard-list" color={color} size={size} />
+                },
+            }}></Tab.Screen>
         </Tab.Navigator>
     )
 }

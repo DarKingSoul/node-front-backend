@@ -17,6 +17,7 @@ app.get("/ping", (req, res):void => {
 
 app.get("/hola/:nombre/:apellido", (req, res):void => {
     res.setHeader("Content-Type", "application/json");
+    res.setHeader("Access-Control-Allow-Origin", "");
     const nombre = req.params.nombre;
     const apellido = req.params.apellido;
     console.log("alguien ha ingresado sus nombres!!!");
