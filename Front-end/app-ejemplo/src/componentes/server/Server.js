@@ -13,7 +13,7 @@ const Server = () => {
     
     const fetchData = async () => {
         try {
-            console.log(`${url}/hola/:${nombre}/:${apellido}`);
+            console.log(`URL solicitada: ${url}/hola/${nombre}/${apellido}`);
             const response = await fetch(`${url}/hola/:${nombre}/:${apellido}`);
             const jsonData = await response.json();
             console.log(jsonData)

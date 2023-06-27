@@ -54,9 +54,9 @@ const ListComponent = () => {
                 </View>
             </View>
 
-            // Modal
+            {/* Modal */}
             <Modal
-                animationType="slide"
+                animationType="slide"  
                 transparent={true}
                 visible={showProfile}
                 onRequestClose={() => {

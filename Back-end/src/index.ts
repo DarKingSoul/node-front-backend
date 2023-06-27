@@ -1,4 +1,4 @@
-import express, { request } from "express";
+import express from "express";
 import cors from "cors";
 
 // Inicializamos los endpoints
@@ -16,11 +16,10 @@ app.get("/ping", (req, res):void => {
 })
 
 app.get("/hola/:nombre/:apellido", (req, res):void => {
-    res.setHeader("Content-Type", "application/json");
-    res.setHeader("Access-Control-Allow-Origin", "");
     const nombre = req.params.nombre;
     const apellido = req.params.apellido;
     console.log("alguien ha ingresado sus nombres!!!");
+    res.set('Content-Type', 'application/json');
     res.send({nombre: nombre, apellido: apellido});
 })
 

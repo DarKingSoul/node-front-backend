@@ -2,10 +2,10 @@ import React from "react";
 import { StyleSheet, View, Image, Linking, Text } from "react-native";
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const Profile = ({task, closeProfile}) => {
+const instagram_username = <Icon name="instagram" size={30} color={"black"} />
+const portfolio_url = <Icon name="globe" size={30} color={"black"} />
 
-    const instagram_username = <Icon name="instagram" size={30} color={"black"} />
-    const portfolio_url = <Icon name="instagram" size={30} color={"black"} />
+const Profile = ({task, closeProfile}) => {
 
     return (
         <View style={styles.item}>
@@ -22,8 +22,6 @@ const Profile = ({task, closeProfile}) => {
                     <Text style={{color: "blue"}} onPress={() => {Linking.openURL(task.user.social.instagram_username)}} >
                         {instagram_username}
                     </Text>
-                </View>
-                <View style={styles.redes}>
                     <Text style={{color: "blue"}} onPress={() => {Linking.openURL(task.user.portfolio_url)}} >
                         {portfolio_url}
                     </Text>
@@ -34,7 +32,7 @@ const Profile = ({task, closeProfile}) => {
                     <Image style={styles.image2} source={require("../../../assets/favicon.png")} />
                 </View>
             </View>
-            <a onClick={closeProfile} >Cerrar</a>
+            <a onClick={closeProfile}>Cerrar</a>
         </View>
     )
 }
