@@ -13,20 +13,20 @@ const Navigation = () => {
             <Tab.Screen name="Home" component={Menu} options={{
                 tabBarLabel: "Home",
                 tabBarIcon: ({color, size}) => {
-                    <MaterialCommunityIcons name="home" color={color} size={size} />
+                    return <MaterialCommunityIcons name="home" color={color} size={size} />
                 },
             }}>
             </Tab.Screen>
             <Tab.Screen name="List" component={ListComponent} options={{
                 tabBarLabel: "Listado",
                 tabBarIcon: ({color, size}) => {
-                    <MaterialCommunityIcons name="clipboard-list" color={color} size={size} />
+                    return <MaterialCommunityIcons name="clipboard-list" color={color} size={size} />
                 },
             }}></Tab.Screen>
             <Tab.Screen name="Server" component={Server} options={{
                 tabBarLabel: "Server",
                 tabBarIcon: ({color, size}) => {
-                    <MaterialCommunityIcons name="clipboard-list" color={color} size={size} />
+                    return <MaterialCommunityIcons name="comment-edit-outline" color={color} size={size} />
                 },
             }}></Tab.Screen>
         </Tab.Navigator>
