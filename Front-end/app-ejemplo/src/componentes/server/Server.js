@@ -5,29 +5,34 @@ const Server = () => {
 
     const [nombre, setNombre] = useState('');
     const [apellido, setApellido] = useState('');
+    const [data, setData] = useState();
 
     // Correr server desde github
     const url = "https://darkingsoul-vigilant-winner-5pgj6vgwpj634wj-3000.preview.app.github.dev";
-
-    // Para notificar al componente que existe un cambio
     
     const fetchData = async () => {
         try {
             console.log(`URL solicitada: ${url}/hola/${nombre}/${apellido}`);
-            const response = await fetch(`${url}/hola/:${nombre}/:${apellido}`);
+            const response = await fetch(`${url}/hola/${nombre}/${apellido}`);
             const jsonData = await response.json();
-            console.log(jsonData)
+            setData(jsonData);
         } catch (e) {
             console.error("error", e);
         }
     }
 
     const saludar = () => {
-        // useEffect(() => {
-        //     fetchData(nombre, apellido);
-        // }, [])
-
         fetchData();
+    }
+
+    const Item = () => {
+        return (data && 
+            <View style={styles.responseContainer} >
+                <Text style={styles.responseText} >
+                    {`Bienvenido ${data.nombre} ${data.apellido}!!`}
+                </Text>
+            </View>
+        )
     }
 
     return (
@@ -43,9 +48,12 @@ const Server = () => {
                 <TextInput style={styles.inputServer} onChangeText={setApellido} value={apellido} placeholder="Ingrese su apellido..."/>
                 <View style={styles.buttonContainer}>
                     <TouchableOpacity style={styles.buttonServer} onPress={saludar}>
-                        <Text>Saludar!!!</Text>
+                        <Text style={styles.textButton}>Saludar!!!</Text>
                     </TouchableOpacity>
                 </View>
+            </View>
+            <View>
+                <Item />
             </View>
         </View>
     )    
@@ -82,11 +90,25 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     buttonServer: {
-        backgroundColor: "#DDDDDD",
+        backgroundColor: "#79c0f2",
         padding: 12,
         borderRadius: 15,
         width: 150,
         textAlign: "center"
+    }, 
+    textButton: {
+        fontWeight: "bold"
+    },
+    responseContainer: {
+        marginTop: 25,
+        borderTopWidth: 1,
+        borderTopColor: "#6a6867"
+    },
+    responseText: {
+        paddingTop: 12,
+        textAlign: "center",
+        fontSize: 26,
+        fontWeight: "bold"
     }
 })
 

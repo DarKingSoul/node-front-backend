@@ -5,26 +5,26 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 const instagram_username = <Icon name="instagram" size={30} color={"black"} />
 const portfolio_url = <Icon name="globe" size={30} color={"black"} />
 
-const Profile = ({task, closeProfile}) => {
+const Profile = ({ task, closeProfile }) => {
 
     return (
         <View style={styles.item}>
             <View style={styles.supimage}>
                 <View style={styles.leftSide}>
-                    <Image style={styles.image} source={{uri: task.urls.raw}} />
+                    <Image style={styles.image} source={{ uri: task.urls.raw }} />
                 </View>
                 <View style={styles.rightSide}>
-                    <Text style={{color: "blue"}} onPress={() => {Linking.openURL(task.user.portfolio_url)}} >
+                    <Text style={{ color: "blue" }} onPress={() => { Linking.openURL(task.user.portfolio_url) }} >
                         {task.user.name}
                     </Text>
-                </View>
-                <View style={styles.redes}>
-                    <Text style={{color: "blue"}} onPress={() => {Linking.openURL(task.user.social.instagram_username)}} >
-                        {instagram_username}
-                    </Text>
-                    <Text style={{color: "blue"}} onPress={() => {Linking.openURL(task.user.portfolio_url)}} >
-                        {portfolio_url}
-                    </Text>
+                    <View style={styles.redes}>
+                        <Text style={{ color: "blue" }} onPress={() => { Linking.openURL(task.user.social.instagram_username) }} >
+                            {instagram_username}
+                        </Text>
+                        <Text style={{ color: "blue" }} onPress={() => { Linking.openURL(task.user.portfolio_url) }} >
+                            {portfolio_url}
+                        </Text>
+                    </View>
                 </View>
             </View>
             <View style={styles.containerKpi}>
@@ -32,7 +32,7 @@ const Profile = ({task, closeProfile}) => {
                     <Image style={styles.image2} source={require("../../../assets/favicon.png")} />
                 </View>
             </View>
-            <a onClick={closeProfile}>Cerrar</a>
+            <Text style={styles.button} onPress={closeProfile}>Cerrar</Text>
         </View>
     )
 }
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         height: "100%",
         width: "100%",
         backgroundColor: "white",
-        borderRadius: 20, 
+        borderRadius: 20,
         display: "flex",
         alignItems: "center",
         justifyContent: "center"
@@ -63,12 +63,12 @@ const styles = StyleSheet.create({
     image: {
         width: 100,
         height: 100,
-        borderRadius: 50,
+        borderRadius: 50
     },
     rightSide: {
         flexBasis: "50%",
         display: "flex",
-        alignContent: "center",
+        alignItems: "center",
         flexDirection: "column",
         justifyContent: "space-evenly"
     },
@@ -80,9 +80,10 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     containerKpi: {
+        width: 100,
         display: "flex",
         flexDirection: "row",
-        justifyContent: "space-around",
+        justifyContent: "space-around"
     },
     kpiR: {
         width: 20
@@ -90,6 +91,12 @@ const styles = StyleSheet.create({
     image2: {
         width: 20,
         height: 20
+    },
+    button: {
+        marginTop: 12,
+        padding: 17,
+        backgroundColor: "#79c0f2",
+        borderRadius: 15
     }
 })
 
