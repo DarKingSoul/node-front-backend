@@ -5,8 +5,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 const ProfileCard = () => {
     
     const user = {
-        avatar: "github-profiles/Darksoul-0040/img/profile.png",
-        coverPhoto: "https://wallpapers.com/images/hd/profile-picture-background-10tprnkqwqif4lyv.jpg",
+        avatar: "https://cdn.icon-icons.com/icons2/1736/PNG/512/4043260-avatar-male-man-portrait_113269.png",
+        coverPhoto: "https://concepto.de/wp-content/uploads/2023/01/avion.jpg",
         name: "Marvin Salcedo"
     }
 

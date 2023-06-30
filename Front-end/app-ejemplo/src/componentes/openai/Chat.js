@@ -6,9 +6,10 @@ const Chat = () => {
 
     const [pregunta, setPregunta] = useState();
     const [respuesta, setRespuesta] = useState();
+    const [tokens, setTokens] = useState();
 
     const configuration = new Configuration({
-        apiKey: "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",
+        apiKey: "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",
     });
 
     const openai = new OpenAIApi(configuration);
@@ -17,12 +18,12 @@ const Chat = () => {
         try {
             const chatCompletion = await openai.createChatCompletion({
                 model: "gpt-3.5-turbo",
-                messages: [{role: "assistant", content: `Covierte el siguiente numero a binario ${pregunta}`}],
+                messages: [{role: "assistant", content: `Convierte el numero a binario ${pregunta}`}],
                 temperature: 0.6,
-                maxTokens: 50,
             });
             setRespuesta(chatCompletion.data.choices[0].message.content)
             console.log(chatCompletion.data.choices[0].message);
+            setTokens(chatCompletion.data.usage.total_tokens);
         } catch (e) {
             console.error("error", e);
         }
@@ -33,6 +34,9 @@ const Chat = () => {
             <View style={styles.responseContainer} >
                 <Text style={styles.responseText} >
                     {`Respuesta: ${respuesta}`}
+                </Text>
+                <Text style={styles.responseText} >
+                    {`Respuesta: ${tokens}`}
                 </Text>
             </View>
         )

@@ -8,7 +8,7 @@ const Server = () => {
     const [data, setData] = useState();
 
     // Correr server desde github
-    const url = "https://darkingsoul-vigilant-winner-5pgj6vgwpj634wj-1022.preview.app.github.dev";
+    const url = "https://darkingsoul-vigilant-winner-5pgj6vgwpj634wj-9022.preview.app.github.dev";
     
     const fetchData = async () => {
         try {
