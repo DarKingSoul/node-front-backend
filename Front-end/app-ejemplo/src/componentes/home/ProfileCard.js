@@ -15,7 +15,7 @@ const ProfileCard = () => {
     const facebook = <Icon name="facebook" size={30} color={"black"}/>
     const instagram = <Icon name="instagram" size={30} color={"black"}/>
     const linkedin = <Icon name="linkedin" size={30} color={"black"}/>
-    const tiktok = <Icon name="tiktok" size={30} color={"black"}/>
+    const tiktok = <Icon name="music" size={30} color={"black"}/>
     
     return (
         <View style={styles.container}>
