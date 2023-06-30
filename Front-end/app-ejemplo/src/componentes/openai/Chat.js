@@ -1,35 +1,38 @@
-import React, { useEffect, useState } from "react";
+import { Configuration, OpenAIApi } from "openai";
+import React, { useState } from "react";
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 
-const Server = () => {
+const Chat = () => {
 
-    const [nombre, setNombre] = useState('');
-    const [apellido, setApellido] = useState('');
-    const [data, setData] = useState();
+    const [pregunta, setPregunta] = useState();
+    const [respuesta, setRespuesta] = useState();
 
-    // Correr server desde github
-    const url = "https://darkingsoul-vigilant-winner-5pgj6vgwpj634wj-1022.preview.app.github.dev";
+    const configuration = new Configuration({
+        apiKey: "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",
+    });
+
+    const openai = new OpenAIApi(configuration);
     
     const fetchData = async () => {
         try {
-            console.log(`URL solicitada: ${url}/hola/${nombre}/${apellido}`);
-            const response = await fetch(`${url}/hola/${nombre}/${apellido}`);
-            const jsonData = await response.json();
-            setData(jsonData);
+            const chatCompletion = await openai.createChatCompletion({
+                model: "gpt-3.5-turbo",
+                messages: [{role: "assistant", content: `Covierte el siguiente numero a binario ${pregunta}`}],
+                temperature: 0.6,
+                maxTokens: 50,
+            });
+            setRespuesta(chatCompletion.data.choices[0].message.content)
+            console.log(chatCompletion.data.choices[0].message);
         } catch (e) {
             console.error("error", e);
         }
     }
 
-    const saludar = () => {
-        fetchData();
-    }
-
     const Item = () => {
-        return (data && 
+        return (respuesta && 
             <View style={styles.responseContainer} >
                 <Text style={styles.responseText} >
-                    {`Bienvenido ${data.nombre} ${data.apellido}!!`}
+                    {`Respuesta: ${respuesta}`}
                 </Text>
             </View>
         )
@@ -38,17 +41,15 @@ const Server = () => {
     return (
         <View style={styles.container}>
             <Text style={styles.titleContainer}>
-                Conexión con el servidor 
+                Conexión con OpenAi
             </Text>
             <View style={styles.serverContainer}>
-                <Text style={styles.titleServer}>Ingrese los siguientes datos</Text>
-                <Text style={styles.textServer}>Ingrese su nombre</Text>
-                <TextInput style={styles.inputServer} onChangeText={setNombre} value={nombre} placeholder="Ingrese su nombre..." />
-                <Text style={styles.textServer}>Ingrese su apellido</Text>
-                <TextInput style={styles.inputServer} onChangeText={setApellido} value={apellido} placeholder="Ingrese su apellido..."/>
+                <Text style={styles.titleServer}>Convertidor Binario</Text>
+                <Text style={styles.textServer}>Ingrese el número a convertir</Text>
+                <TextInput style={styles.inputServer} onChangeText={setPregunta} value={pregunta} placeholder="Ingrese su pregunta..." />
                 <View style={styles.buttonContainer}>
-                    <TouchableOpacity style={styles.buttonServer} onPress={saludar}>
-                        <Text style={styles.textButton}>Saludar!!!</Text>
+                    <TouchableOpacity style={styles.buttonServer} onPress={fetchData}>
+                        <Text style={styles.textButton}>Enviar</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -56,7 +57,7 @@ const Server = () => {
                 <Item />
             </View>
         </View>
-    )    
+    )
 }
 
 const styles = StyleSheet.create({
@@ -106,10 +107,8 @@ const styles = StyleSheet.create({
     },
     responseText: {
         paddingTop: 12,
-        textAlign: "center",
-        fontSize: 26,
-        fontWeight: "bold"
+        textAlign: "center"
     }
 })
 
-export default Server;
+export default Chat;
