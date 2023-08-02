@@ -5,6 +5,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import ListComponent from "./componentes/list/List";
 import Server from "./componentes/server/Server";
 import Chat from "./componentes/openai/Chat";
+import Pdf from "./componentes/pdf/Pdf";
 
 const Tab = createBottomTabNavigator();
 
@@ -32,6 +33,12 @@ const Navigation = () => {
             }}></Tab.Screen>
             <Tab.Screen name="OpenAi" component={Chat} options={{
                 tabBarLabel: "OpenAi",
+                tabBarIcon: ({color, size}) => {
+                    return <MaterialCommunityIcons name="comment-edit-outline" color={color} size={size} />
+                },
+            }}></Tab.Screen>
+            <Tab.Screen name="PDF" component={Pdf} options={{
+                tabBarLabel: "PDF",
                 tabBarIcon: ({color, size}) => {
                     return <MaterialCommunityIcons name="comment-edit-outline" color={color} size={size} />
                 },
